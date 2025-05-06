@@ -263,10 +263,10 @@ bash scripts/inference/Inference.sh
 ## 🤝🏼 Cite Us
 
 ```
-@article{bian2025videopainter,
-  title={VideoPainter: Any-length Video Inpainting and Editing with Plug-and-Play Context Control},
-  author={Bian, Yuxuan and Zhang, Zhaoyang and Ju, Xuan and Cao, Mingdeng and Xie, Liangbin and Shan, Ying and Xu, Qiang},
-  journal={arXiv preprint arXiv:2503.05639},
+@article{zhang2025flexiact,
+  title={FlexiAct: Towards Flexible Action Control in Heterogeneous Scenarios},
+  author={Zhang, Shiyi and Zhuang, Junhao and Zhang, Zhaoyang and Shan, Ying and Tang, Yansong},
+  journal={arXiv preprint arXiv: . },
   year={2025}
 }
 ```
