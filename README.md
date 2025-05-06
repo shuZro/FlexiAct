@@ -11,7 +11,7 @@ Accepeted by SIGGRAPH 2025
 
 
 <a href='https://shiyi-zh0408.github.io/projectpages/FlexiAct/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> &nbsp;
-<a href="https://arxiv.org/abs/2503.05639"><img src="https://img.shields.io/badge/arXiv-2503.05639-b31b1b.svg"></a> &nbsp;
+<a href="https://arxiv.org/abs/2503.05639"><img src="https://img.shields.io/badge/arXiv-1111.1111-b31b1b.svg"></a> &nbsp;
 <a href='https://huggingface.co/datasets/shiyi0408/FlexiAct'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue'></a> &nbsp;
 <a href="https://huggingface.co/shiyi0408/FlexiAct"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue"></a>
 </p>
