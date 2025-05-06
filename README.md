@@ -36,8 +36,8 @@ https://github.com/user-attachments/assets/e6778911-5606-472c-a8b0-f3421c85feb9
 
 
 ## 🔥 Update Log
-- [2025/4/21] 📢 📢  [FlexiAct](https://huggingface.co/shiyi0408/FlexiAct) are released, an flexible action transfer framework in heterogeneous scenarios.
-- [2025/4/21] 📢 📢  [Our traning data](https://huggingface.co/datasets/shiyi0408/FlexiAct) are released.
+- [2025/5/6] 📢 📢  [FlexiAct](https://huggingface.co/shiyi0408/FlexiAct) are released, an flexible action transfer framework in heterogeneous scenarios.
+- [2025/5/6] 📢 📢  [Our traning data](https://huggingface.co/datasets/shiyi0408/FlexiAct) are released.
 
 ## 📋 TODO
 
