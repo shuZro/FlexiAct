@@ -19,7 +19,7 @@ Accepeted by SIGGRAPH 2025
 **Your star means a lot for us to develop this project!** ⭐⭐⭐
 </div>
 
-https://github.com/user-attachments/assets/efed8ae1-3419-4203-a5b2-64c7ac7cbfc9
+![FlexiAct Demo](https://github.com/user-attachments/assets/e6778911-5606-472c-a8b0-f3421c85feb9)
 
 **📖 Table of Contents**
 
@@ -48,8 +48,7 @@ https://github.com/user-attachments/assets/efed8ae1-3419-4203-a5b2-64c7ac7cbfc9
 ## 🛠️ Method Overview
 
 we propose **FlexiAct**, which transfers actions from a reference video to an arbitrary target image. Unlike existing methods, FlexiAct allows for variations in layout, viewpoint, and skeletal structure between the subject of the reference video and the target image, while maintaining identity consistency. Achieving this requires precise action control, spatial structure adaptation, and consistency preservation. To this end, we introduce **RefAdapter**, a lightweight image-conditioned adapter that excels in spatial adaptation and consistency preservation, surpassing existing methods in balancing appearance consistency and structural flexibility. Additionally, based on our observations, the denoising process exhibits varying levels of attention to motion (low frequency) and appearance details (high frequency) at different timesteps. So we propose **FAE** (Frequency-aware Action Extraction), which, unlike existing methods that rely on separate spatial-temporal architectures, directly achieves action extraction during the denoising process.
-![method](https://github.com/user-attachments/assets/61a4043d-d1b8-44fa-91e3-12c273e34404)
-
+![Method](https://github.com/user-attachments/assets/fa89d093-2741-46f2-87a7-b9cfbd77d0ee)
 
 
 ## 🚀 Getting Started
