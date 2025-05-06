@@ -19,7 +19,7 @@ Accepeted by SIGGRAPH 2025
 **Your star means a lot for us to develop this project!** ⭐⭐⭐
 </div>
 
-![FlexiAct Demo](https://github.com/user-attachments/assets/e6778911-5606-472c-a8b0-f3421c85feb9)
+https://github.com/user-attachments/assets/e6778911-5606-472c-a8b0-f3421c85feb9
 
 **📖 Table of Contents**
 
