@@ -266,7 +266,7 @@ bash scripts/inference/Inference.sh
 @article{zhang2025flexiact,
   title={FlexiAct: Towards Flexible Action Control in Heterogeneous Scenarios},
   author={Zhang, Shiyi and Zhuang, Junhao and Zhang, Zhaoyang and Shan, Ying and Tang, Yansong},
-  journal={arXiv preprint arXiv: . },
+  journal={arXiv preprint arXiv:2505.03730},
   year={2025}
 }
 ```
