@@ -2,7 +2,7 @@
 
 # FlexiAct: Towards Flexible Action Control in Heterogeneous Scenarios
 
-Accepeted by SIGGRAPH 2025
+Accepted by SIGGRAPH 2025
 
  [Shiyi Zhang](https://shiyi-zh0408.github.io/)<sup>1,2*</sup>, [Junhao Zhuang](https://zhuang2002.github.io/)<sup>1,2*</sup>, [Zhaoyang Zhang](https://zzyfd.github.io/#/)<sup>2‡</sup>, [Ying Shan](https://www.linkedin.com/in/YingShanProfile/)<sup>2</sup>, [Yansong Tang](https://andytang15.github.io/)<sup>1✉</sup> <br>
  <sup>1</sup>Tsinghua University <sup>2</sup>ARC Lab, Tencent PCG <br>
