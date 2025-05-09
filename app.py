@@ -21,8 +21,7 @@ def inference_model(
     
     gt_img = process_image(target_image)
     emb_ckpt_path = f'ckpts/FAE/motion_ckpts/{emb_ckpt_path}.pt'
-    # pretrained_model_name_or_path = '/group/40033/share/zhaoyangzhang/PretrainedCache/CogVideoX-5b-I2V'
-    pretrained_model_name_or_path="/group/40005/yuxuanbian/hf_models/CogVideoX-5b-I2V"
+    pretrained_model_name_or_path="/Your/CogVideoX-5b-I2V/Path" # Set your own path
     return generate_video(
         gt_img=gt_img,
         prompt=prompt,

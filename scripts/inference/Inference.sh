@@ -1,35 +1,12 @@
-#!/bin/bash
-export ENV_VENUS_PROXY=http://zzachzhang:rmdRjCXJAhvOXxhE@vproxy.woa.com:31289
-export NO_PROXY=localhost,.woa.com,.oa.com,.tencent.com,.tencentcos.cn,.myqcloud.com
-export HTTP_PROXY=$ENV_VENUS_PROXY
-export HTTPS_PROXY=$ENV_VENUS_PROXY
-export no_proxy=$NO_PROXY
-export http_proxy=$ENV_VENUS_PROXY
-export https_proxy=$ENV_VENUS_PROXY
-
-export XDG_CACHE=/group/40043/leizizhang/pretrained
-export TORCH_HOME=/group/40043/leizizhang/pretrained
-export HF_HOME=/group/40043/leizizhang/pretrained
-
-# export XDG_CACHE=/group/40005/leizizhang/pretrained
-# export TORCH_HOME=/group/40005/leizizhang/pretrained
-# export HF_HOME=/group/40005/leizizhang/pretrained
-
 export NCCL_P2P_LEVEL=NVL
 export NCCL_TIMEOUT=7200
-
-pip config set global.index-url https://mirrors.tencent.com/pypi/simple/
-pip config set global.extra-index-url https://mirrors.tencent.com/repository/pypi/tencent_pypi/simple
-pip config set global.trusted-host mirrors.tencent.com
-
-export CACHE_PATH="~/.cache"
-export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 export HCCL_CONNECT_TIMEOUT=7200
+export MODEL_PATH="/Your/CogVideoX-5b-I2V/Path" # Please set your CogVideoX-5b-I2V path
 
 which python
 
 CUDA_VISIBLE_DEVICES=0 python scripts/inference.py \
-    --pretrained_model_name_or_path /group/40033/share/zhaoyangzhang/PretrainedCache/CogVideoX-5b-I2V \
+    --pretrained_model_name_or_path $MODEL_PATH \
     --refadapter_ckpt_path ckpts/refnetlora_step40000_model.pt \
     --emb_ckpt_path ckpts/FAE/motion_ckpts/rotate.pt \
     --output_path outputs \
@@ -37,4 +14,3 @@ CUDA_VISIBLE_DEVICES=0 python scripts/inference.py \
     --prompt "A woman is performing a fitness exercise. She clasps her hands together, placing them in front of her chest, and keeps her forearms horizontal. She stands with her legs apart. She rotates her upper body, and her arms rotate along with her upper body. Meanwhile, her hands remain clasped together, and her lower body stays stationary." \
     --reweight_scale 1.0
     
-python /group/40034/leizizhang/projects/multi_occupy.py

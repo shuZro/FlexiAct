@@ -1,26 +1,3 @@
-#!/bin/bash
-export ENV_VENUS_PROXY=http://zzachzhang:rmdRjCXJAhvOXxhE@vproxy.woa.com:31289
-export NO_PROXY=localhost,.woa.com,.oa.com,.tencent.com,.tencentcos.cn,.myqcloud.com
-export HTTP_PROXY=$ENV_VENUS_PROXY
-export HTTPS_PROXY=$ENV_VENUS_PROXY
-export no_proxy=$NO_PROXY
-export http_proxy=$ENV_VENUS_PROXY
-export https_proxy=$ENV_VENUS_PROXY
-
-export XDG_CACHE=/group/40043/leizizhang/pretrained
-export TORCH_HOME=/group/40043/leizizhang/pretrained
-export HF_HOME=/group/40043/leizizhang/pretrained
-
-# export XDG_CACHE=/group/40005/leizizhang/pretrained
-# export TORCH_HOME=/group/40005/leizizhang/pretrained
-# export HF_HOME=/group/40005/leizizhang/pretrained
-
-
-pip config set global.index-url https://mirrors.tencent.com/pypi/simple/
-pip config set global.extra-index-url https://mirrors.tencent.com/repository/pypi/tencent_pypi/simple
-pip config set global.trusted-host mirrors.tencent.com
-
-
 # training parameters
 learning_rate=3e-3 # 3e-3
 ipa_layers=42
@@ -32,29 +9,29 @@ lora_step=40000
 ckpt_path="ckpts/refnetlora_step${lora_step}_model.pt"
 wo_kv=0
 
+# Parse command line arguments to obtain the user-specified num_processes, default is 1
 visible_devices=7
 num_processes=1
 motion_type=null
 while getopts ":n:v:a:" opt; do
   case $opt in
     n) num_processes=$OPTARG ;;
-    v) visible_devices=$OPTARG ;;
-    a) motion_type=$OPTARG ;;  # 处理新的选项 'a'
+    v) visible_devices=$OPTARG ;; # visible devices
+    a) motion_type=$OPTARG ;;  # motion type
     \?) echo "Invalid option: -$OPTARG" >&2 ;;
     :) echo "Option -$OPTARG requires an argument." >&2 ;;
   esac
 done
-export PROJECT_NAME="onestage_${motion_type}_${lora_weight}lora_${lora_step}lorasteps"
-export MODEL_PATH="/group/40033/share/zhaoyangzhang/PretrainedCache/CogVideoX-5b-I2V" # 非清远A100
+export PROJECT_NAME="camera_onestage_${motion_type}_${lora_weight}lora_${lora_step}lorasteps"
+export MODEL_PATH="/Your/CogVideoX-5b-I2V/Path" # Please set your CogVideoX-5b-I2V path
+export OUTPUT_PATH="./exp_outputs/${PROJECT_NAME}"
 export CACHE_PATH="~/.cache"
 export DATASET_PATH="aaa"
-export OUTPUT_PATH="/group/40075/leizizhang/CogVideo-Output/camera_test_/${PROJECT_NAME}"
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 export HCCL_CONNECT_TIMEOUT=7200
 config_file="scripts/accelerate_config.yaml"
 python_file="scripts/train.py"
 model_dir="models"
-
 
 main_process_port=$((20117 + visible_devices))
 echo "main_process_port: $main_process_port"
@@ -69,8 +46,6 @@ cp $0 $OUTPUT_PATH
 cp -r $model_dir $OUTPUT_PATH
 
 which python
-# max batch-size  is 2.
-# lr_warmup_steps 200
 stage=0
 CUDA_VISIBLE_DEVICES=$visible_devices accelerate launch --config_file $config_file --machine_rank 0 --num_processes $num_processes --main_process_port $main_process_port \
   $python_file \
@@ -120,5 +95,3 @@ CUDA_VISIBLE_DEVICES=$visible_devices accelerate launch --config_file $config_fi
   --rank 64 \
   --lora_alpha 32 \
   --checkpoints_total_limit 100 \
-
-CUDA_VISIBLE_DEVICES=$visible_devices python /group/40034/leizizhang/projects/multi_occupy.py
