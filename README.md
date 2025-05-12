@@ -16,7 +16,7 @@ Accepted by SIGGRAPH 2025
 <a href="https://huggingface.co/shiyi0408/FlexiAct"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue"></a>
 </p>
 
-**Your star means a lot for us to develop this project!** ⭐⭐⭐
+**Your star means a lot to us in developing this project!** ⭐⭐⭐
 </div>
 
 https://github.com/user-attachments/assets/e6778911-5606-472c-a8b0-f3421c85feb9
@@ -36,18 +36,19 @@ https://github.com/user-attachments/assets/e6778911-5606-472c-a8b0-f3421c85feb9
 
 
 ## 🔥 Update Log
-- [2025/5/6] 📢 📢  [FlexiAct](https://huggingface.co/shiyi0408/FlexiAct) are released, an flexible action transfer framework in heterogeneous scenarios.
+- [2025/5/6] 📢 📢  [FlexiAct](https://huggingface.co/shiyi0408/FlexiAct) is released, a flexible action transfer framework in heterogeneous scenarios.
 - [2025/5/6] 📢 📢  [Our traning data](https://huggingface.co/datasets/shiyi0408/FlexiAct) are released.
 
 ## 📋 TODO
-
-- [x] Release trainig and inference code
+- [ ] Release the instructions for Windows
+- [ ] Update the gradio demo's instructions
+- [x] Release training and inference code
 - [x] Release [FlexiAct checkpoints](https://huggingface.co/shiyi0408/FlexiAct) (based on CogVideoX-5B)
 - [x] Release [Traning data](https://huggingface.co/datasets/shiyi0408/FlexiAct).
 - [x] Release gradio demo
 ## 🛠️ Method Overview
 
-we propose **FlexiAct**, which transfers actions from a reference video to an arbitrary target image. Unlike existing methods, FlexiAct allows for variations in layout, viewpoint, and skeletal structure between the subject of the reference video and the target image, while maintaining identity consistency. Achieving this requires precise action control, spatial structure adaptation, and consistency preservation. To this end, we introduce **RefAdapter**, a lightweight image-conditioned adapter that excels in spatial adaptation and consistency preservation, surpassing existing methods in balancing appearance consistency and structural flexibility. Additionally, based on our observations, the denoising process exhibits varying levels of attention to motion (low frequency) and appearance details (high frequency) at different timesteps. So we propose **FAE** (Frequency-aware Action Extraction), which, unlike existing methods that rely on separate spatial-temporal architectures, directly achieves action extraction during the denoising process.
+We propose **FlexiAct**, which transfers actions from a reference video to an arbitrary target image. Unlike existing methods, FlexiAct allows for variations in layout, viewpoint, and skeletal structure between the subject of the reference video and the target image, while maintaining identity consistency. Achieving this requires precise action control, spatial structure adaptation, and consistency preservation. To this end, we introduce **RefAdapter**, a lightweight image-conditioned adapter that excels in spatial adaptation and consistency preservation, surpassing existing methods in balancing appearance consistency and structural flexibility. Additionally, based on our observations, the denoising process exhibits varying levels of attention to motion (low frequency) and appearance details (high frequency) at different timesteps. So we propose **FAE** (Frequency-aware Action Extraction), which, unlike existing methods that rely on separate spatial-temporal architectures, directly achieves action extraction during the denoising process.
 ![Method](https://github.com/user-attachments/assets/fa89d093-2741-46f2-87a7-b9cfbd77d0ee)
 
 
@@ -158,7 +159,7 @@ By downloading the data, you are agreeing to the terms and conditions of the lic
 For each action, we use `crop.csv` to store information about the reference videos used for training, and `val_image.csv` to store information about the target images used for validation during training. The specific steps are as follows:
 
 **Step1: Prepare your reference video**
-Save your video in `benchmark/reference_videos/{senerio}` (using `rotate.mp4` as an example, where `{senerio}` is `human`). Adjust the parameters in `benchmark/reference_videos/extract_vid_and_crop.py` according to your needs to determine the cropped segments:
+Save your video in `benchmark/reference_videos/{scenario}` (using `rotate.mp4` as an example, where `{scenario}` is `human`). Adjust the parameters in `benchmark/reference_videos/extract_vid_and_crop.py` according to your needs to determine the cropped segments:
 ```
 action_name = "rotate" # your action name, same with the reference video name
 subject_type = "human" # camera, human, animal
@@ -171,17 +172,17 @@ python benchmark/reference_videos/extract_vid_and_crop.py
 ```
 
 
-You will get the `benchmark/reference_videos/{senerio}/{action_name}_crop` folder containing 12 new videos after random cropping. This part can refer to the explanation in the second paragraph of section 3.4 in our paper. This helps prevent the Frequency-aware Embedding from focusing on the reference video's layout.
+You will get the `benchmark/reference_videos/{scenario}/{action_name}_crop` folder containing 12 new videos after random cropping. This part can refer to the explanation in the second paragraph of section 3.4 in our paper. This helps prevent the Frequency-aware Embedding from focusing on the reference video's layout.
 
 **Step2: Create `crop.csv`**
 
-To obtain captions for the reference videos, we recommend using [CogVLM](https://github.com/THUDM/CogVLM) to generate video descriptions. Then you need to create `crop.csv` in `benchmark/captions/{senerio}/{action_name}`. You can directly copy `crop.csv` from our provided examples and modify the action name in the path (first column) to `{action_name}`, and change the caption in the last column to the corresponding caption. You don't need to modify other columns.
+To obtain captions for the reference videos, we recommend using [CogVLM](https://github.com/THUDM/CogVLM) to generate video descriptions. Then you need to create `crop.csv` in `benchmark/captions/{scenario}/{action_name}`. You can directly copy `crop.csv` from our provided examples and modify the action name in the path (first column) to `{action_name}`, and change the caption in the last column to the corresponding caption. You don't need to modify other columns.
 
 **Step3: Prepare target images and create `val_image.csv`**  
 
-First, prepare the target images you want to animate in `benchmark/target_images/{senerio}`.
+First, prepare the target images you want to animate in `benchmark/target_images/{scenario}`.
 
-Then, create `val_image.csv` in `benchmark/captions/{senerio}/{action_name}` to store the paths and captions of the target images used for testing during training. We recommend using captions similar to those of the reference videos. Below shows the format of `val_caption.csv`:
+Then, create `val_image.csv` in `benchmark/captions/{scenario}/{action_name}` to store the paths and captions of the target images used for testing during training. We recommend using captions similar to those of the reference videos. Below shows the format of `val_caption.csv`:
 
 | Path      | Caption      |
 |------------|------------|
@@ -202,7 +203,7 @@ Checkpoints of FlexiAct can be downloaded from [here](https://huggingface.co/shi
 - **RefAdapter** pretrained checkpoints for CogVideoX-5b-I2V 
 - 16 types of **FAE** pretrained checkpoints for CogVideoX-5b-I2V 
 
-You can download the checkpoints, and put the checkpoints to the `ckpts` folder by:
+You can download the checkpoints and put the checkpoints in the `ckpts` folder by:
 ```
 # Make sure git-lfs is installed (https://git-lfs.com)
 git lfs install
