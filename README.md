@@ -237,7 +237,9 @@ The ckpt structure should be like:
 
 <details>
 <summary><b>Training 🤯</b></summary>
-
+ 
+**Single GPU Memory Usage:** 37GB
+ 
 **Note:**  
 We have provided the pre-trained checkpoint for RefAdapter, so you don't need to train RefAdapter. However, we still provide `scripts/train/RefAdapter_train.sh` as its training script. If you wish to try training RefAdapter, we recommend using [Miradata](https://github.com/mira-space/MiraData) as training data. The following describes how to train FAE for reference videos.
 
@@ -252,6 +254,8 @@ bash scripts/train/FAE_train.sh -v 0,1,2,3 -a rotate
 
 <details>
 <summary><b>Inference 📜</b></summary>
+
+**Single GPU Memory Usage:** 32GB
 
 You can animate your target images with pretrained FAE checkpoints:
 
