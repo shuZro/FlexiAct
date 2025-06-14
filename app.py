@@ -21,7 +21,7 @@ def inference_model(
     
     gt_img = process_image(target_image)
     emb_ckpt_path = f'ckpts/FAE/motion_ckpts/{emb_ckpt_path}.pt'
-    pretrained_model_name_or_path="/Your/CogVideoX-5b-I2V/Path" # Set your own path
+    pretrained_model_name_or_path="cogvideox"
     return generate_video(
         gt_img=gt_img,
         prompt=prompt,
@@ -69,170 +69,11 @@ if __name__ == "__main__":
 
     # Reference videos, Target Image, Prompt, Checkpoint
     examples_inference = [
-        ####### rotate ####### 
-        ['ckpts/FAE/reference_videos/rotate.mp4', 
-         'benchmark/target_images/human/game_girl_1.webp', 
-        '''A woman is performing a fitness exercise. She clasps her hands together, \
-placing them in front of her chest, and keeps her forearms horizontal. She stands \
-with her legs apart. She rotates her upper body, and her arms rotate along with \
-her upper body. Meanwhile, her hands remain clasped together, and her lower body \
-stays stationary.''', 
-         'rotate'],
-        ['ckpts/FAE/reference_videos/rotate.mp4', 
-         'benchmark/target_images/human/game_man_2.jpg', 
-        '''A bald cartoon man dressed in tattered clothes and with bandages wrapped \
-around his hands is performing a fitness exercise. He clasps his hands together, \
-placing them in front of his chest, and keeps his forearms horizontal. He stands \
-with his legs apart. He rotates his upper body, and his arms rotate along with \
-his upper body. Meanwhile, his hands remain clasped together, and his lower body \
-stays stationary.''', 
-         'rotate'],
-        ['ckpts/FAE/reference_videos/rotate.mp4', 
-         'benchmark/target_images/human/movie_man_17.webp', 
-        '''An old man is performing a fitness exercise. He clasps his hands together, \
-placing them in front of his chest, and keeps his forearms horizontal. He stands with \
-his legs apart. He rotates his upper body, and his arms rotate along with his upper body. \
-Meanwhile, his hands remain clasped together, and his lower body stays stationary.''', 
-         'rotate'],
         ####### crouch ####### 
         ['ckpts/FAE/reference_videos/crouch.mp4', 
          'benchmark/target_images/human/movie_man_31.webp', 
         '''A man is doing squats.''', 
          'crouch'],
-        ['ckpts/FAE/reference_videos/crouch.mp4', 
-         'benchmark/target_images/human/movie_man_32.webp', 
-        '''A man is doing squats.''', 
-         'crouch'],
-        ['ckpts/FAE/reference_videos/crouch.mp4', 
-         'benchmark/target_images/human/movie_man_26.webp', 
-        '''A man is doing squats.''', 
-         'crouch'],
-        ####### fitness ####### 
-        ['ckpts/FAE/reference_videos/fitness.mp4', 
-         'benchmark/target_images/human/movie_man_27.jpg', 
-        '''A man raised his arms above his head, then slowly brought his hands together \
-and lowered them to his chest.''', 
-         'fitness'], 
-        ['ckpts/FAE/reference_videos/fitness.mp4', 
-         'benchmark/target_images/human/movie_man_15.jpg', 
-        '''A man in a suit raised his arms above his head, then slowly brought his hands \
-together and lowered them to his chest.''', 
-         'fitness'],
-        ['ckpts/FAE/reference_videos/fitness.mp4', 
-         'benchmark/target_images/human/movie_man_24.jpg', 
-        '''A man raised his arms above his head, then slowly brought his hands together \
-and lowered them to his chest.''', 
-         'fitness'],
-        ####### chest ####### 
-        ['ckpts/FAE/reference_videos/chest.mp4', 
-         'benchmark/target_images/human/movie_man_17.webp', 
-        '''An old man is exercising with a resistance machine. He leans slightly forward \
-while keeping his back straight. He grips the handles of the resistance machine and pulls \
-them downward with force. After fully extending his arms, he returns them to the starting position \
-and repeats the same motion.''', 
-         'chest'],
-        ['ckpts/FAE/reference_videos/chest.mp4', 
-         'benchmark/target_images/human/game_man_8.jpeg', 
-        '''A humanoid cartoon monster is exercising with a resistance machine. It leans \
-slightly forward while keeping its back straight. It grips the handles of the resistance \
-machine and pulls them downward with force. After fully extending its arms, it returns them \
-to the starting position and repeats the same motion.''', 
-         'chest'],
-        ['ckpts/FAE/reference_videos/chest.mp4', 
-         'benchmark/target_images/human/movie_man_31.webp', 
-        '''A man is exercising with a resistance machine. He leans slightly forward while \
-keeping his back straight. He grips the handles of the resistance machine and pulls them downward \
-with force. After fully extending his arms, he returns them to the starting position and repeats \
-the same motion.''', 
-         'chest'],
-         ####### one_leg ####### 
-        ['ckpts/FAE/reference_videos/one_leg.mp4', 
-         'benchmark/target_images/human/movie_man_15.jpg', 
-        '''A man in a suit raised his hands above his head while placing his right foot against \
-his left knee.''', 
-         'one_leg'],
-        ['ckpts/FAE/reference_videos/one_leg.mp4', 
-         'benchmark/target_images/human/movie_man_28.webp', 
-        '''A man with his upper body naked raised his hands above his head while placing his right \
-foot against his left knee.''', 
-         'one_leg'],
-         ####### dogjump ####### 
-        ['ckpts/FAE/reference_videos/dogjump.mp4', 
-         'benchmark/target_images/animal/animal_dog_3.jpg', 
-        '''A dog jumped up while barking.''', 
-         'dogjump'],
-        ['ckpts/FAE/reference_videos/dogjump.mp4', 
-         'benchmark/target_images/animal/anmal_deer.jpg', 
-        '''A deer jumped up while barking.''', 
-         'dogjump'],
-        ['ckpts/FAE/reference_videos/dogjump.mp4', 
-         'benchmark/target_images/animal/animal_wolf6.jpg', 
-        '''A wolf jumped up while howling.''', 
-         'dogjump'],
-         ####### dogstand ####### 
-        ['ckpts/FAE/reference_videos/dogstand.mp4', 
-         'benchmark/target_images/animal/animal_rabbit.jpg', 
-        '''A rabbit stood up.''', 
-         'dogstand'],
-        ['ckpts/FAE/reference_videos/dogstand.mp4', 
-         'benchmark/target_images/animal/animal_capy.webp', 
-        '''A capybara stood up.''', 
-         'dogstand'],
-        ['ckpts/FAE/reference_videos/dogstand.mp4', 
-         'benchmark/target_images/animal/animal_ciwei.jpg', 
-        '''A hedgehog stood up.''', 
-         'dogstand'],
-         ####### kangaroo ####### 
-        ['ckpts/FAE/reference_videos/kangaroo.mp4', 
-         'benchmark/target_images/animal/animal_owl.jpg', 
-        '''An owl is hopping and running with its legs together.''', 
-         'kangaroo'],
-        ['ckpts/FAE/reference_videos/kangaroo.mp4', 
-         'benchmark/target_images/animal/animal_bird2.jpg', 
-        '''A bird is hopping and running with its legs together.''', 
-         'kangaroo'],    
-         ####### human2animal_3 ####### 
-        ['ckpts/FAE/reference_videos/human2animal_3.mp4', 
-         'benchmark/target_images/animal/animal_tiger2.jpg', 
-        '''The video features a tiger performing various exercises. It is seen in different \
-positions, including a squatting stance, a human2animal_3, and a push-up position. The tiger's \
-movements are fluid and graceful, suggesting that it is an experienced athlete or someone \
-who has been practicing these exercises for some time.''', 
-         'human2animal_3'],
-         ####### human2animal_1 ####### 
-        ['ckpts/FAE/reference_videos/human2animal_1.mp4', 
-         'benchmark/target_images/animal/animal_wolf.jpg', 
-        '''The video features a cartoon wolf-like creature performing various yoga poses. \
-Throughout the video, it maintains a focused and calm demeanor, demonstrating different \
-yoga stances with its paws on the mat.''', 
-         'human2animal_1'],
-         ####### human2animal_2 ####### 
-        ['ckpts/FAE/reference_videos/human2animal_2.mp4', 
-         'benchmark/target_images/animal/animal_dog.jpg', 
-        '''The video features a dog practicing yoga. Throughout the video, it maintains \
-a focused and calm demeanor, demonstrating various yoga poses with a sense of tranquility \
-and balance. The dog's movements are fluid and graceful, reflecting its proficiency in the practice.''', 
-         'human2animal_2'],
-         ####### camera_forward ####### 
-        ['ckpts/FAE/reference_videos/camera_forward.mp4', 
-         'benchmark/target_images/camera/view3.jpg', 
-        '''The perspective in the video is moving.''', 
-         'camera_forward'],
-         ####### camera_rotate #######
-        ['ckpts/FAE/reference_videos/camera_rotate.mp4', 
-         'benchmark/target_images/camera/view2.jpg', 
-        '''The perspective in the video is moving.''', 
-         'camera_rotate'],
-         ####### camera_zoom_out #######
-        ['ckpts/FAE/reference_videos/camera_zoom_out.mp4', 
-         'benchmark/target_images/camera/view8.jpg', 
-        '''The perspective in the video is moving.''', 
-         'camera_zoom_out'],
-         ####### camera_zoom_out2 #######
-        ['ckpts/FAE/reference_videos/camera_zoom_out2.mp4', 
-         'benchmark/target_images/camera/view1.jpg', 
-        '''The perspective in the video is moving.''', 
-         'camera_zoom_out2'],
          ####### Dance #######
         ['ckpts/FAE/reference_videos/Dance.mp4', 
          'benchmark/target_images/human/movie_man_32.webp', 
